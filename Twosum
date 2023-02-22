@@ -1,3 +1,11 @@
+//Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+//Input: nums = [2,7,11,15], target = 9
+//Output: [0,1]
+//Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
+
+
+//First Approach is using array
+
 import java.util.*;
 
 public class Twosum1 {
@@ -28,3 +36,43 @@ public class Twosum1 {
 	}
 
 }
+
+
+//Second Approach is by using Hashmap
+
+import java.util.*;
+
+public class Twosum1a {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter the n value:");
+		int n=sc.nextInt();
+		int nums[]=new int[n];
+		System.out.println("Enter the values in the array:");
+		for(int i=0;i<n;i++) {
+			nums[i]=sc.nextInt();
+		}
+		System.out.println("Enter the value of the target:");
+		int target =sc.nextInt();
+		TwoSum(target,nums);
+
+	}
+	public static int TwoSum(int target,int nums[]) {
+		Map<Integer,Integer> map=new HashMap<Integer,Integer>();
+		int result[]=new int[2];
+		for(int i=0;i<nums.length;i++) {
+			if(map.containsKey(target-nums[i])) {
+				result [1]=i;
+				result[0]=map.get(target-nums[i]);
+			}
+			map.put(nums[i], i);
+		}
+		System.out.println(result[0]+" "+result[1]);
+		return 0;
+		
+	}
+
+}
+
